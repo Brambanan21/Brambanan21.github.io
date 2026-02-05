@@ -53,3 +53,24 @@ footer {
 text-align:center;
 padding:40px;
 }
+
+.header {
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:black;
+}
+
+.header-left {
+display:flex;
+align-items:center;
+gap:40px;
+}
+
+.header-right img {
+width:70px;
+height:70px;
+object-fit:cover;
+border-radius:50%;
+}
