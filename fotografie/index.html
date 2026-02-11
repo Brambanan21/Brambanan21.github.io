@@ -99,39 +99,69 @@
 
 
 <script>
+  const shots = Array.from(document.querySelectorAll(".shot"));
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
 
-const shots = document.querySelectorAll(".shot");
+  let currentIndex = -1;
 
-const lightbox = document.getElementById("lightbox");
+  function openAt(index) {
+    currentIndex = index;
+    const shot = shots[currentIndex];
+    lightbox.style.display = "block";
+    lightboxImg.src = shot.dataset.src;
+    lightboxCaption.innerText = shot.dataset.caption || "";
+  }
 
-const lightboxImg = document.getElementById("lightbox-img");
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+    lightboxCaption.innerText = "";
+    currentIndex = -1;
+  }
 
-const lightboxCaption = document.getElementById("lightbox-caption");
+  function next() {
+    if (shots.length === 0) return;
+    const i = (currentIndex + 1) % shots.length;
+    openAt(i);
+  }
 
+  function prev() {
+    if (shots.length === 0) return;
+    const i = (currentIndex - 1 + shots.length) % shots.length;
+    openAt(i);
+  }
 
-shots.forEach(shot => {
+  shots.forEach((shot, index) => {
+    shot.addEventListener("click", () => openAt(index));
+  });
 
-shot.addEventListener("click", () => {
+  // Klick außerhalb = schließen (dein Backdrop muss onclick haben oder wir fangen es hier ab)
+  lightbox.addEventListener("click", (e) => {
+    // Klick auf Hintergrund schließt
+    if (e.target.classList.contains("lightbox") || e.target.classList.contains("lightbox-backdrop")) {
+      closeLightbox();
+    }
+  });
 
-lightbox.style.display = "block";
+  // Tastatur
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display !== "block") return;
 
-lightboxImg.src = shot.dataset.src;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") next();
+    if (e.key === "ArrowLeft") prev();
+  });
 
-lightboxCaption.innerText = shot.dataset.caption;
+  // Optional: Klick links/rechts auf Foto = prev/next
+  lightboxImg.addEventListener("click", (e) => {
+    const x = e.clientX;
+    const mid = window.innerWidth / 2;
+    if (x > mid) next();
+    else prev();
+  });
 
-});
-
-});
-
-
-function closeLightbox() {
-
-lightbox.style.display = "none";
-
-}
-
+  // Damit dein X Button funktioniert:
+  window.closeLightbox = closeLightbox;
 </script>
-
-
-</body>
-</html>
