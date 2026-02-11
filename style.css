@@ -106,7 +106,7 @@ border-radius:50%;
 /* --- Masonry-like Gallery (nicht stramm) --- */
 .gallery {
   column-count: 2;
-  column-gap: 22px;
+  column-gap: 40px;
 }
 
 @media (max-width: 900px) {
@@ -121,7 +121,7 @@ border-radius:50%;
   display: block;
   width: 100%;
   padding: 0;
-  margin: 0 0 22px;
+  margin: 0 0 40px;
   border: 0;
   background: transparent;
   cursor: pointer;
@@ -207,13 +207,20 @@ border-radius:50%;
 }
 
 .lightbox-panel {
+
   position: relative;
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 16px;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+
+  max-width: 1100px;   /* maximale Breite */
+  max-height: 90vh;
+
+  margin: 60px auto;
+
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 20px;
+  
 }
 
 @media (max-width: 700px) {
@@ -231,11 +238,18 @@ border-radius:50%;
   cursor: pointer;
 }
 
-.lightbox-img {
-  width: 100%;
+#lightbox-img {
+
+  width: auto;
   height: auto;
+
+  max-width: 100%;
+  max-height: 75vh;
+
   display: block;
-  border-radius: 10px;
+
+  margin: 0 auto;
+
 }
 
 .lightbox-caption {
