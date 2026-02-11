@@ -1,37 +1,101 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fotografie</title>
-<link rel="stylesheet" href="../style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photos — Gallery</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
 
 <header>
-<a class="logo" href="../index.html">Dein Name</a>
-
-<nav>
-<a href="../fotografie/index.html">Fotografie</a>
-<a href="../design/index.html">Design</a>
-<a href="../texte/index.html">Texte</a>
-</nav>
+  <a class="logo" href="../index.html">Dein Name</a>
+  <nav>
+    <a href="../fotografie/">Photos</a>
+    <a href="../design/index.html">Design</a>
+    <a href="../texte/index.html">Texte</a>
+  </nav>
 </header>
 
 <main class="container">
 
-<h1>Fotografie</h1>
+  <div class="page-top">
+    <h1 class="page-title">Photo</h1>
+    <div class="subnav">
+      <a class="active" href="./">Gallery</a>
+      <a href="./series/">Series</a>
+    </div>
+  </div>
 
-<div class="grid">
+  <!-- Masonry-like Gallery (nicht stramm, mixed Hoch/Quer) -->
+  <section class="gallery" aria-label="Gallery">
+    <!-- Passe src + data-caption an deine Dateien an -->
+    <button class="shot" type="button"
+      data-src="../images/fotografie/gallery/DSCF4271-2.jpg"
+      data-caption="Kurzer Text zum Bild (Ort, Jahr, Kontext).">
+      <img loading="lazy" src="../images/fotografie/gallery/DSCF4271-2.jpg" alt="">
+    </button>
 
-<img src="../images/fotografie/DSCF4271-2.jpg">
-<img src="../images/fotografie/DSCF4570-2.jpg">
-<img src="../images/fotografie/DSCF5030-2.jpg">
+    <button class="shot" type="button"
+      data-src="../images/fotografie/gallery/DSCF4570-2.jpg"
+      data-caption="Noch ein Text. Später kannst du auch Series/Projekt hier erwähnen.">
+      <img loading="lazy" src="../images/fotografie/gallery/DSCF4570-2.jpg" alt="">
+    </button>
 
-</div>
+    <button class="shot" type="button"
+      data-src="../images/fotografie/gallery/DSCF5030-2.jpg"
+      data-caption="Dritter Text.">
+      <img loading="lazy" src="../images/fotografie/gallery/DSCF5030-2.jpg" alt="">
+    </button>
+  </section>
 
 </main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close></div>
+
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Foto groß anzeigen">
+    <button class="lightbox-close" type="button" data-close aria-label="Schließen">✕</button>
+    <img class="lightbox-img" id="lightboxImg" alt="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+</div>
+
+<script>
+  const shots = document.querySelectorAll(".shot");
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightboxImg");
+  const lbCap = document.getElementById("lightboxCaption");
+
+  function openLightbox(src, caption) {
+    lbImg.src = src;
+    lbCap.textContent = caption || "";
+    lb.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeLightbox() {
+    lb.setAttribute("aria-hidden", "true");
+    lbImg.src = "";
+    lbCap.textContent = "";
+    document.body.classList.remove("no-scroll");
+  }
+
+  shots.forEach(btn => {
+    btn.addEventListener("click", () => {
+      openLightbox(btn.dataset.src, btn.dataset.caption);
+    });
+  });
+
+  lb.addEventListener("click", (e) => {
+    if (e.target.matches("[data-close]")) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+</script>
 
 </body>
 </html>
