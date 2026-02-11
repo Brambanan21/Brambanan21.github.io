@@ -190,71 +190,94 @@ border-radius:50%;
   margin-bottom: 22px;
 }
 
-/* --- Lightbox --- */
-.no-scroll { overflow: hidden; }
+/* LIGHTBOX OVERLAY */
 
-.lightbox[aria-hidden="true"] { display: none; }
 .lightbox {
+
+  display: none;
+
   position: fixed;
   inset: 0;
-  z-index: 999;
+
+  z-index: 9999;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  background: rgba(0,0,0,0.4);
+
 }
 
-.lightbox-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.75);
-}
+
+/* kein weißer Kasten mehr */
 
 .lightbox-panel {
 
-  position: relative;
-
-  max-width: 1100px;   /* maximale Breite */
-  max-height: 90vh;
-
-  margin: 60px auto;
-
-  background: white;
-
-  border-radius: 12px;
-
-  padding: 20px;
-  
-}
-
-@media (max-width: 700px) {
-  .lightbox-panel { margin: 12px; }
-}
-
-.lightbox-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  border: 0;
-  background: rgba(0,0,0,.06);
-  border-radius: 10px;
-  padding: 8px 10px;
-  cursor: pointer;
+
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: transparent;
+  padding: 40px;
+
 }
+
+
+/* FOTO */
 
 #lightbox-img {
+
+  max-width: 90vw;
+  max-height: 90vh;
 
   width: auto;
   height: auto;
 
-  max-width: 100%;
-  max-height: 75vh;
-
-  display: block;
-
-  margin: 0 auto;
+  object-fit: contain;
 
 }
 
-.lightbox-caption {
-  margin: 12px 2px 0;
-  opacity: .85;
+
+/* CAPTION */
+
+#lightbox-caption {
+
+  position: absolute;
+
+  bottom: 40px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: white;
+
+  font-size: 14px;
+
+  opacity: 0.8;
+
 }
 
-.lightbox { display: none; }
+
+/* CLOSE BUTTON */
+
+.lightbox-close {
+
+  position: absolute;
+
+  top: 25px;
+  right: 30px;
+
+  color: white;
+
+  font-size: 28px;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+}
