@@ -82,19 +82,19 @@
 
 <div class="lightbox" id="lightbox">
 
-<div class="lightbox-backdrop" onclick="closeLightbox()"></div>
+  <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
 
-<div class="lightbox-panel">
+  <button class="lb-arrow lb-prev" type="button" aria-label="Vorheriges Foto" onclick="prevPhoto()">‹</button>
+  <button class="lb-arrow lb-next" type="button" aria-label="Nächstes Foto" onclick="nextPhoto()">›</button>
 
-<button class="lightbox-close" onclick="closeLightbox()">✕</button>
-
-<img id="lightbox-img">
-
-<p id="lightbox-caption"></p>
+  <div class="lightbox-panel">
+    <button class="lightbox-close" type="button" onclick="closeLightbox()" aria-label="Schließen">✕</button>
+    <img id="lightbox-img" alt="">
+    <p id="lightbox-caption"></p>
+  </div>
 
 </div>
 
-</div>
 
 
 
