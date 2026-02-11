@@ -1,1 +1,93 @@
+ <!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Series Titel 01</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <a class="logo" href="../index.html">Dein Name</a>
+  <nav>
+    <a href="./">Photos</a>
+    <a href="../design/index.html">Design</a>
+    <a href="../texte/index.html">Texte</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <div class="page-top">
+    <h1 class="page-title">Series Titel 01</h1>
+    <div class="subnav">
+      <a href="./">Gallery</a>
+      <a class="active" href="./series/">Series</a>
+    </div>
+  </div>
+
+  <p class="series-intro">
+    Ein kurzer Text zur Serie: Idee, Zeitraum, Ort, was dich interessiert hat.
+  </p>
+
+  <section class="gallery" aria-label="Series Gallery">
+    <button class="shot" type="button"
+      data-src="../images/fotografie/series/serie-01/DSCF4271-2.jpg"
+      data-caption="Bildtext für diese Serie.">
+      <img loading="lazy" src="../images/fotografie/series/serie-01/DSCF4271-2.jpg" alt="">
+    </button>
+
+    <button class="shot" type="button"
+      data-src="../images/fotografie/series/serie-01/DSCF4570-2.jpg"
+      data-caption="Noch ein Bildtext.">
+      <img loading="lazy" src="../images/fotografie/series/serie-01/DSCF4570-2.jpg" alt="">
+    </button>
+
+    <button class="shot" type="button"
+      data-src="../images/fotografie/series/serie-01/DSCF5030-2.jpg"
+      data-caption="Dritter Bildtext.">
+      <img loading="lazy" src="../images/fotografie/series/serie-01/DSCF5030-2.jpg" alt="">
+    </button>
+  </section>
+
+</main>
+
+<!-- gleiche Lightbox wie in Gallery -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close></div>
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Foto groß anzeigen">
+    <button class="lightbox-close" type="button" data-close aria-label="Schließen">✕</button>
+    <img class="lightbox-img" id="lightboxImg" alt="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+</div>
+
+<script>
+  const shots = document.querySelectorAll(".shot");
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightboxImg");
+  const lbCap = document.getElementById("lightboxCaption");
+
+  function openLightbox(src, caption) {
+    lbImg.src = src;
+    lbCap.textContent = caption || "";
+    lb.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeLightbox() {
+    lb.setAttribute("aria-hidden", "true");
+    lbImg.src = "";
+    lbCap.textContent = "";
+    document.body.classList.remove("no-scroll");
+  }
+
+  shots.forEach(btn => btn.addEventListener("click", () => openLightbox(btn.dataset.src, btn.dataset.caption)));
+  lb.addEventListener("click", (e) => { if (e.target.matches("[data-close]")) closeLightbox(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+</script>
+
+</body>
+</html>
 
