@@ -231,8 +231,8 @@ border-radius:50%;
 
 #lightbox-img {
 
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 75vw;
+  max-height: 75vh;
 
   width: auto;
   height: auto;
@@ -284,49 +284,34 @@ border-radius:50%;
 
 /* Lightbox Arrows */
 
-.lb-arrow {
+.lb-arrow{
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10000;
 
-  width: 54px;
-  height: 54px;
+  background: none;     /* kein Kreis */
+  border: none;
+  padding: 0;
 
-  border: 0;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.14);
   color: white;
-
-  font-size: 34px;
-  line-height: 54px;
+  font-size: 44px;
+  line-height: 1;
 
   cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  opacity: 0.85;
 }
 
-.lb-arrow:hover {
-  background: rgba(255,255,255,0.22);
+.lb-arrow:hover{
+  opacity: 1;
 }
 
-.lb-prev { left: 18px; }
-.lb-next { right: 18px; }
+.lb-prev{ left: 18px; }
+.lb-next{ right: 18px; }
 
-/* auf Mobile etwas kleiner */
-@media (max-width: 600px) {
-  .lb-arrow {
-    width: 44px;
-    height: 44px;
-    font-size: 28px;
-    line-height: 44px;
-  }
-  .lb-prev { left: 10px; }
-  .lb-next { right: 10px; }
+@media (max-width: 600px){
+  .lb-arrow{ font-size: 34px; }
+  .lb-prev{ left: 10px; }
+  .lb-next{ right: 10px; }
 }
