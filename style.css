@@ -105,12 +105,12 @@ border-radius:50%;
 
 /* --- Masonry-like Gallery (nicht stramm) --- */
 .gallery {
-  column-count: 3;
-  column-gap: 18px;
+  column-count: 2;
+  column-gap: 22px;
 }
 
-@media (max-width: 1000px) {
-  .gallery { column-count: 2; }
+@media (max-width: 900px) {
+  .gallery { column-count: 1; }
 }
 
 @media (max-width: 650px) {
@@ -121,7 +121,7 @@ border-radius:50%;
   display: block;
   width: 100%;
   padding: 0;
-  margin: 0 0 18px;
+  margin: 0 0 22px;
   border: 0;
   background: transparent;
   cursor: pointer;
