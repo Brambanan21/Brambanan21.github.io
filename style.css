@@ -333,3 +333,25 @@ border-radius:50%;
   .lb-prev{ left: 10px; }
   .lb-next{ right: 10px; }
 }
+
+/* --- Homepage hero --- */
+.home-main {
+  padding: 0;
+}
+
+.home-hero {
+  min-height: calc(100vh - 160px);
+  background: url('/images/bridge.jpg') center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 18vh;
+}
+
+.home-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 7vw, 4.8rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
