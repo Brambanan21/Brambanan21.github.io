@@ -5,9 +5,10 @@ font-family:Arial, sans-serif;
 
 header {
 display:flex;
-justify-content:space-between;
+justify-content:flex-start;
 padding:20px;
 background:#c1cdcd;
+position:relative;
 }
 
 .logo {
@@ -20,6 +21,23 @@ nav a {
 color:white;
 margin-left:20px;
 text-decoration:none;
+}
+
+.header-logo {
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%, -50%);
+display:inline-flex;
+align-items:center;
+justify-content:center;
+}
+
+.header-logo img {
+width:56px;
+height:56px;
+object-fit:contain;
+display:block;
 }
 
 .container {
