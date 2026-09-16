@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Photo — Gallery</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
@@ -18,15 +18,15 @@
 <a href="../design/index.html">DESIGN</a>
 <a href="../texte/index.html">PROJECTS</a>
 </nav>
-<a class="header-logo" href="/" aria-label="Home">
+<a class="header-logo" href="/en/" aria-label="Home">
 <img src="/images/camel.png" alt="Bram Soepenberg logo">
 </a>
 </div>
 
 <div class="lang-switch">
-<span>DE</span>
+<a href="../../fotografie/index.html">DE</a>
 <span class="lang-sep">/</span>
-<a href="../en/fotografie/index.html">EN</a>
+<span>EN</span>
 </div>
 
 </header>
@@ -50,39 +50,39 @@
 
 
 <button class="shot" type="button"
-  data-src="../images/fotografie/gallery/oranges.jpg"
+  data-src="../../images/fotografie/gallery/oranges.jpg"
   data-caption="Series name, location, year">
-  <img src="../images/fotografie/gallery/oranges.jpg" alt="">
+  <img src="../../images/fotografie/gallery/oranges.jpg" alt="">
 </button>
 
 <button class="shot" type="button"
-  data-src="../images/fotografie/gallery/trash.jpg"
+  data-src="../../images/fotografie/gallery/trash.jpg"
   data-caption="Series name, location, year">
-  <img src="../images/fotografie/gallery/trash.jpg" alt="">
+  <img src="../../images/fotografie/gallery/trash.jpg" alt="">
 </button>
 
 <button class="shot" type="button"
-  data-src="../images/fotografie/gallery/nepal.jpg"
+  data-src="../../images/fotografie/gallery/nepal.jpg"
   data-caption="Series name, location, year">
-  <img src="../images/fotografie/gallery/nepal.jpg" alt="">
+  <img src="../../images/fotografie/gallery/nepal.jpg" alt="">
 </button>
 
   <button class="shot" type="button"
-  data-src="../images/fotografie/gallery/market.jpg"
+  data-src="../../images/fotografie/gallery/market.jpg"
   data-caption="Series name, location, year">
-  <img src="../images/fotografie/gallery/market.jpg" alt="">
+  <img src="../../images/fotografie/gallery/market.jpg" alt="">
 </button>
 
   <button class="shot" type="button"
-  data-src="../images/fotografie/gallery/baskets.jpg"
+  data-src="../../images/fotografie/gallery/baskets.jpg"
   data-caption="Series name, location, year">
-  <img src="../images/fotografie/gallery/baskets.jpg" alt="">
+  <img src="../../images/fotografie/gallery/baskets.jpg" alt="">
 </button>
 
   <button class="shot" type="button"
-  data-src="../images/fotografie/gallery/barber.jpg"
+  data-src="../../images/fotografie/gallery/barber.jpg"
   data-caption="Series name, location, year">
-  <img src="../images/fotografie/gallery/barber.jpg" alt="">
+  <img src="../../images/fotografie/gallery/barber.jpg" alt="">
 </button>
 
 
@@ -92,21 +92,21 @@
 
 <footer>
 <nav class="legal-nav">
-<a href="../impressum/index.html">Impressum</a>
-<a href="../datenschutz/index.html">Datenschutz</a>
+<a href="../impressum/index.html">Legal Notice</a>
+<a href="../datenschutz/index.html">Privacy Policy</a>
 </nav>
 <p>made by bram</p>
 </footer>
 
-<div class="lightbox" id="lightbox"
+<div class="lightbox" id="lightbox">
 
   <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
 
-  <button class="lb-arrow lb-prev" type="button" aria-label="Vorheriges Foto" onclick="prevPhoto()">‹</button>
-  <button class="lb-arrow lb-next" type="button" aria-label="Nächstes Foto" onclick="nextPhoto()">›</button>
+  <button class="lb-arrow lb-prev" type="button" aria-label="Previous photo" onclick="prevPhoto()">‹</button>
+  <button class="lb-arrow lb-next" type="button" aria-label="Next photo" onclick="nextPhoto()">›</button>
 
   <div class="lightbox-panel">
-    <button class="lightbox-close" type="button" onclick="closeLightbox()" aria-label="Schließen">✕</button>
+    <button class="lightbox-close" type="button" onclick="closeLightbox()" aria-label="Close">✕</button>
     <img id="lightbox-img" alt="">
     <p id="lightbox-caption"></p>
   </div>
@@ -155,15 +155,12 @@
     shot.addEventListener("click", () => openAt(index));
   });
 
-  // Klick außerhalb = schließen (dein Backdrop muss onclick haben oder wir fangen es hier ab)
   lightbox.addEventListener("click", (e) => {
-    // Klick auf Hintergrund schließt
     if (e.target.classList.contains("lightbox") || e.target.classList.contains("lightbox-backdrop")) {
       closeLightbox();
     }
   });
 
-  // Tastatur
   document.addEventListener("keydown", (e) => {
     if (lightbox.style.display !== "block") return;
 
@@ -172,7 +169,6 @@
     if (e.key === "ArrowLeft") prev();
   });
 
-  // Optional: Klick links/rechts auf Foto = prev/next
   lightboxImg.addEventListener("click", (e) => {
     const x = e.clientX;
     const mid = window.innerWidth / 2;
@@ -180,7 +176,6 @@
     else prev();
   });
 
-  // Damit dein X Button funktioniert:
   window.closeLightbox = closeLightbox;
 
   window.nextPhoto = next;

@@ -80,14 +80,48 @@ margin-bottom:12px;
 }
 
 .legal-nav a {
-color:inherit;
-opacity:.6;
-text-decoration:none;
+color:#555;
+text-decoration:underline;
 font-size:14px;
 }
 
 .legal-nav a:hover {
+color:#000;
+}
+
+.lang-switch {
+position:absolute;
+right:20px;
+top:50%;
+transform:translateY(-50%);
+display:flex;
+align-items:center;
+gap:6px;
+font-size:13px;
+}
+
+.lang-switch a,
+.lang-switch span {
+color:white;
+text-decoration:none;
+}
+
+.lang-switch a {
+opacity:.7;
+}
+
+.lang-switch a:hover {
 opacity:1;
+}
+
+.lang-switch span {
+font-weight:bold;
+}
+
+.lang-switch .lang-sep {
+color:white;
+opacity:.5;
+font-weight:normal;
 }
 
 .legal h2 {
