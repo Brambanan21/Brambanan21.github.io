@@ -149,9 +149,10 @@
   });
 
   lightbox.addEventListener("click", (e) => {
-    if (e.target.classList.contains("lightbox") || e.target.classList.contains("lightbox-backdrop")) {
-      closeLightbox();
-    }
+    if (e.target === lightboxImg) return;
+    if (e.target.closest(".lb-arrow")) return;
+    if (e.target.closest(".lightbox-close")) return;
+    closeLightbox();
   });
 
   document.addEventListener("keydown", (e) => {
