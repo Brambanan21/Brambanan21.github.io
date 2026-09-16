@@ -94,7 +94,7 @@
 <p>made by bram</p>
 </footer>
 
-<div class="lightbox" id="lightbox"
+<div class="lightbox" id="lightbox">
 
   <div class="lightbox-backdrop" onclick="closeLightbox()"></div>
 
@@ -148,12 +148,12 @@
     shot.addEventListener("click", () => openAt(index));
   });
 
-  // Klick außerhalb = schließen (dein Backdrop muss onclick haben oder wir fangen es hier ab)
+  // Klick außerhalb des Fotos = schließen
   lightbox.addEventListener("click", (e) => {
-    // Klick auf Hintergrund schließt
-    if (e.target.classList.contains("lightbox") || e.target.classList.contains("lightbox-backdrop")) {
-      closeLightbox();
-    }
+    if (e.target === lightboxImg) return;
+    if (e.target.closest(".lb-arrow")) return;
+    if (e.target.closest(".lightbox-close")) return;
+    closeLightbox();
   });
 
   // Tastatur
