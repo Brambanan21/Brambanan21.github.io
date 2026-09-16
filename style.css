@@ -72,6 +72,32 @@ text-align:center;
 padding:40px;
 }
 
+.legal-nav {
+display:flex;
+justify-content:center;
+gap:20px;
+margin-bottom:12px;
+}
+
+.legal-nav a {
+color:inherit;
+opacity:.6;
+text-decoration:none;
+font-size:14px;
+}
+
+.legal-nav a:hover {
+opacity:1;
+}
+
+.legal h2 {
+margin-top:32px;
+}
+
+.legal p, .legal li {
+line-height:1.6;
+}
+
 .header {
 display:flex;
 justify-content:space-between;
